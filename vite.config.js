@@ -1,5 +1,5 @@
 import { resolve } from "path";
-import { defineConfig } from "vite";
+const { defineConfig } = require("vite");
 
 export default defineConfig({
   root: "src/",
