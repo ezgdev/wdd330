@@ -8,7 +8,10 @@ const productId = getParam("product");
 const product = new ProductDetails(productId, dataSource);
 product.init();
 
-/* function addProductToCart(product) {
+
+/*********** Original Code ************/
+// import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+ /*function addProductToCart(product) {
   const itemList = getLocalStorage("so-cart") || [];
   itemList.push(product);
   setLocalStorage("so-cart", itemList);
@@ -22,5 +25,5 @@ async function addToCartHandler(e) {
 // add listener to Add to Cart button
 document
   .getElementById("addToCart")
-  .addEventListener("click", addToCartHandler);
- */
+  .addEventListener("click", addToCartHandler);*/
+ 
