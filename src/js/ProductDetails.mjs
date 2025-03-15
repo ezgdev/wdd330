@@ -37,6 +37,7 @@ export default class ProductDetails {
         let products = getLocalStorage("so-cart") ?? [];
         products.push(this.product);
         setLocalStorage("so-cart", products);
+        window.location.href = "../../index.html";
     }
     renderProductDetails(selector) {
         const element = document.querySelector(selector);
