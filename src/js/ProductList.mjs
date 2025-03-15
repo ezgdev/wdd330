@@ -1,4 +1,4 @@
-import { renderListOfTempaltes } from "./utils.mjs";
+import { renderListOfTemplates } from "./utils.mjs";
 
 function productCardTemplate(product) {
     return `<li class="product-card">
@@ -22,6 +22,6 @@ export default class ProductList {
         this.renderList(myList);
     }
     renderList(list){
-        renderListOfTempaltes(productCardTemplate, this.listElement, list);
+        renderListOfTemplates(productCardTemplate, this.listElement, list);
     }
 }
