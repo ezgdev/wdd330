@@ -32,7 +32,7 @@ export function getParam(param) {
 }
 
 // Render a list of templates
-export function renderListOfTempaltes(
+export function renderListOfTemplates(
   templateFunction,
   parentElement,
   list,
