@@ -96,6 +96,31 @@ button {
 }
 /* End utility classes */
 
+/* Category icon styles */
+.category {
+  padding: 1rem;
+  border: 1px solid green;
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+}
+
+.category--icon{
+  text-align: center;
+}
+
+.category--icon a{
+  text-decoration: none;
+  color: black;
+}
+
+
+.category img {
+  width: 90px;
+  height: 90px;
+}
+/* Category utility classes */
+
 /* Cart icon styles */
 .cart {
   padding-top: 1em;
