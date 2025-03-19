@@ -112,11 +112,15 @@ button {
   text-decoration: none;
   color: black;
 }
-
-
 .category img {
   width: 90px;
   height: 90px;
+}
+
+#product-category {
+  font-size: 2.2rem;
+  text-shadow: 0 0 .5em #777;
+  font-variant: normal;
 }
 /* Category utility classes */
 
