@@ -99,7 +99,6 @@ button {
 /* Category icon styles */
 .category {
   padding: 1rem;
-  border: 1px solid green;
   display: flex;
   gap: 5rem;
   justify-content: center;
