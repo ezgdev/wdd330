@@ -13,5 +13,3 @@ const productList = document.querySelector(".product-list");
 const productListning = new ProductList(category, dataSource, productList);
 
 productListning.init();
-
-
