@@ -76,3 +76,10 @@ export async function loadHeaderFooter(){
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
 };
+
+export function priceTotal (itemsList, getPrice) {
+  let total = 0;
+  itemsList.forEach((item) => total += getPrice(item));
+  
+  return `$ ${total}`; 
+}
