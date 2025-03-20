@@ -13,7 +13,10 @@ function deleteCartContent(event) {
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  const total = priceTotal(cartItems, (item) => item.FinalPrice * item.quantity);
+  const total = priceTotal(
+    cartItems,
+    (item) => item.FinalPrice * item.quantity,
+  );
   document.querySelector(".cart-total__amount").textContent = total;
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
   document.querySelectorAll(".cart-card__delete").forEach((button) => {
