@@ -47,9 +47,8 @@ export default class ProductDetails {
     }
     addToCart() {
         // add the current product to the cart
-        this.itemList = getLocalStorage("so-cart") || [];
-        this.itemList.push(this.product);
-        setLocalStorage("so-cart", this.itemList);
+        const itemList = this.updateCartListWithQuantity();
+        setLocalStorage("so-cart", itemList);
         window.location.href = `/product_listing/?category=${this.product.Category}`;
     }
     renderProductDetails(selector) {
