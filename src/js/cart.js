@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, priceTotal } from "./utils.mjs";
 
 function deleteCartContent(event) {
   const itemId = event.target.getAttribute("data-id");
@@ -13,6 +13,11 @@ function deleteCartContent(event) {
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+  const total = priceTotal(
+    cartItems,
+    (item) => item.FinalPrice * item.quantity,
+  );
+  document.querySelector(".cart-total__amount").textContent = total;
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
   document.querySelectorAll(".cart-card__delete").forEach((button) => {
     button.addEventListener("click", deleteCartContent);
@@ -32,7 +37,7 @@ function cartItemTemplate(item) {
       <h2 class="card__name">${item.Name}</h2>
     </a>
     <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-    <p class="cart-card__quantity">qty: 1</p>
+    <p class="cart-card__quantity">qty: ${item.quantity}</p>
     <p class="cart-card__price">$${item.FinalPrice}</p>  
     <span class="cart-card__delete" data-id=${item.Id}>X</span>
   </li>`;

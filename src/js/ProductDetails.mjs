@@ -32,6 +32,19 @@ export default class ProductDetails {
             .getElementById("addToCart")
             .addEventListener("click", this.addToCart.bind(this));
     }
+    updateCartListWithQuantity(){
+        const itemList = getLocalStorage("so-cart") || [];
+        const found = itemList.findIndex(item => item.Id === this.productId);
+
+        if(found < 0){
+            this.product = {...this.product, quantity: 1};
+            itemList.push(this.product);
+            return itemList;
+        }
+
+        itemList[found].quantity += 1;
+        return itemList;
+    }
     addToCart() {
         // add the current product to the cart
         this.itemList = getLocalStorage("so-cart") || [];
