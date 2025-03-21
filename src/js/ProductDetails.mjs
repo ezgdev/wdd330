@@ -49,7 +49,7 @@ export default class ProductDetails {
         // add the current product to the cart
         const itemList = this.updateCartListWithQuantity();
         setLocalStorage("so-cart", itemList);
-        window.location.href = `/product_listing/?category=${this.product.Category}`;
+        window.location.href = `/index.html`;
     }
     renderProductDetails(selector) {
         const element = document.querySelector(selector);
