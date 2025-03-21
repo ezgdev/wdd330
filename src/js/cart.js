@@ -1,4 +1,11 @@
-import { getLocalStorage, setLocalStorage, priceTotal } from "./utils.mjs";
+import {
+  getLocalStorage,
+  setLocalStorage,
+  priceTotal,
+  loadHeaderFooter,
+} from "./utils.mjs";
+
+loadHeaderFooter();
 
 function deleteCartContent(event) {
   const itemId = event.target.getAttribute("data-id");
