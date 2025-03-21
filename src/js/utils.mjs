@@ -79,7 +79,6 @@ export function priceTotal(itemsList, getPrice) {
 }
 
 export function cartCount() {
-  //let cartItems = getLocalStorage("so-cart");
   const cartItems = JSON.parse(localStorage.getItem("so-cart")) || [];
   const cartCounter = document.getElementById("cartCount");
   if (cartItems.length != 0) {
