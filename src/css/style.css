@@ -177,6 +177,11 @@ button {
 
 /* End cart icon styles */
 
+.breadcrumb {
+  font-family: var(--font-base);
+  font-size: 14px;
+}
+
 .mission {
   padding: 0 0.5em;
   /* margin: 0.5em 0; */
