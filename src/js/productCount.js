@@ -1,6 +1,8 @@
+import { getLocalStorage } from "./utils.mjs";
+
 function updateCartCount() {
   // Retrieve cart items from localStorage
-  const cartItems = JSON.parse(localStorage.getItem("so-cart")) || [];
+  const cartItems = getLocalStorage("so-cart") || [];
   // Get the cart count element
   const cartCountElement = document.getElementById("cartCount");
   // Set the badge text to the number of items in the cart
