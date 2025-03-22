@@ -53,7 +53,7 @@ export default class ProductDetails {
         showAlert("Product added successfully!")
         setTimeout(()=> {
             window.location.href = `/product_listing/?category=${this.product.Category}`;
-        }, 1500);
+        }, 1000);
         
     }
     renderProductDetails(selector) {

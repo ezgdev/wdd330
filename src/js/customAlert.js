@@ -1,4 +1,4 @@
-function showAlert(message, duration = 1500) { // Default duration set to 1.5 seconds
+function showAlert(message, duration = 1000) { // Default duration set to 1 seconds
 
     // Create alert div
     const alertDiv = document.createElement('div');
