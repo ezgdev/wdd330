@@ -73,7 +73,7 @@ export async function loadHeaderFooter() {
 
 export function priceTotal(itemsList, getPrice) {
   let total = 0;
-  itemsList.forEach((item) => (total += getPrice(item)));
+  itemsList.forEach((item) => total += getPrice(item));
 
   return `$ ${total}`;
 }
