@@ -5,7 +5,7 @@ function productDetailsTemplate(product) {
     <h2 class="divider">${product.NameWithoutBrand}</h2>
     <img
         class="divider"
-        src="${product.Image}"
+        src="${product.Images.PrimaryLarge}"
         alt="${product.NameWithoutBrand}"
     />
     <p class="product-card__price">$${product.FinalPrice}</p>
@@ -49,7 +49,7 @@ export default class ProductDetails {
         // add the current product to the cart
         const itemList = this.updateCartListWithQuantity();
         setLocalStorage("so-cart", itemList);
-        window.location.href = `/index.html`;
+        window.location.href = `/product_listing/?category=${this.product.Category}`;
     }
     renderProductDetails(selector) {
         const element = document.querySelector(selector);

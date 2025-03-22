@@ -11,9 +11,14 @@ function deleteCartContent(event) {
   const itemId = event.target.getAttribute("data-id");
   let cartItems = getLocalStorage("so-cart");
 
-  cartItems = cartItems.filter((item) => item.Id !== itemId);
-  setLocalStorage("so-cart", cartItems);
+  const itemIndex = cartItems.findIndex((item) => item.Id === itemId);
+  cartItems[itemIndex].quantity -= 1;
 
+  if (cartItems[itemIndex].quantity <= 0) {
+    cartItems = cartItems.filter((item) => item.Id !== itemId);
+  }
+
+  setLocalStorage("so-cart", cartItems);
   renderCartContents();
 }
 
@@ -36,7 +41,7 @@ function cartItemTemplate(item) {
   <li class="cart-card divider">
     <a href="#" class="cart-card__image">
       <img
-        src="${item.Image}"
+        src="${item.Images.PrimaryMedium}"
         alt="${item.Name}"
       />
     </a>

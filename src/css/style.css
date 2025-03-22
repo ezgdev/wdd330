@@ -111,6 +111,33 @@ button {
 
 /* End utility classes */
 
+/* Category icon styles */
+.category {
+  padding: 1rem;
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+}
+
+.category--icon {
+  text-align: center;
+}
+
+.category--icon a {
+  text-decoration: none;
+  color: black;
+}
+.category img {
+  width: 90px;
+  height: 90px;
+}
+
+#product-category {
+  font-size: 2.2rem;
+  font-variant: small-caps;
+}
+/* Category utility classes */
+
 /* Cart icon styles */
 .cart {
   padding-top: 1em;
