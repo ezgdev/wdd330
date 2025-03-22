@@ -85,7 +85,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -257,6 +257,59 @@ button {
   }
 }
 
+.categories {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.category {
+  text-align: center;
+  padding: 20px;
+  background-color: #ede7d4;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+
+.category img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 10px;
+}
+
+.category a {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.category h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-top: 10px;
+  transition: color 0.3s;
+}
+
+/* Hover effect for the category box */
+.category:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effect for the category text */
+.category:hover h3 {
+  color: #7d7107;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -270,6 +323,20 @@ button {
   .cart-card {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
+  }
+
+  .categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+  }
+
+  .category h3 {
+    font-size: 1rem;
   }
 }
 

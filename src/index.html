@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sleep Outside | Home</title>
     <link rel="stylesheet" href="/css/style.css" />
-    <script src="js/main.js" type="module"></script>
-    <!-- <script src="js/productCount.js" type="module" defer></script> -->
+    <!-- <script src="js/main.js" type="module"></script> -->
+    <script src="js/product-listing.js" type="module"></script>
   </head>
 
   <body>
@@ -34,7 +34,44 @@
       </section>
       <section class="products">
         <h2>Top Products</h2>
-        <ul class="product-list"></ul>
+        <div class="categories">
+          <div class="category">
+            <a href="product_listing/index.html?category=tents"
+              ><img
+                src="./public/images/categories/category-tents.svg"
+                alt="Tent category icon"
+              />
+              <h3>Tents</h3>
+            </a>
+          </div>
+          <div class="category">
+            <a href="product_listing/index.html?category=backpacks"
+              ><img
+                src="./public/images/categories/category-backpacks.svg"
+                alt="Backpack category icon"
+              />
+              <h3>Backpacks</h3>
+            </a>
+          </div>
+          <div class="category">
+            <a href="product_listing/index.html?category=sleeping-bags"
+              ><img
+                src="./public/images/categories/category-sleepingbags.svg"
+                alt="Sleeping Bag category icon"
+              />
+              <h3>Sleeping Bags</h3>
+            </a>
+          </div>
+          <div class="category">
+            <a href="product_listing/index.html?category=hammocks">
+              <img
+                src="./public/images/categories/category-hammocks.svg"
+                alt="Hammock category icon "
+              />
+              <h3>Hammocks</h3>
+            </a>
+          </div>
+        </div>
       </section>
     </main>
     <footer id="main-footer"></footer>
