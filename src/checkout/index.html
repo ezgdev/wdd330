@@ -8,14 +8,49 @@
 
     <title>Sleep Outside | Checkout</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <script src="../js/checkout.js" type="module"></script>
   </head>
 
   <body>
     <header class="divider" id="main-header"></header>
+
     <main class="divider">
       <section class="products">
         <h2>Review & Place your Order</h2>
+      </section>
+      <section class="review">
+        <h3>Subtotal: <span class="review__subtotal"></span></h3>
+        <h3>Tax: <span class="review__tax"></span></h3>
+        <h3>Shipping Estimate: <span class="review__shipping"></span></h3>
+        <h3>Order Total: <span class="review__total"></span></h3>
+      </section>
+      <section class="form">
+        <form action="submit">
+          <label for="firstName">First Name
+          <input id="firstName" type="text" name="firstName" required></label>
+          <label for="lastName">Last Name
+            <input id="lastName" type="text" name="firstName" required></label>
+
+          <label for="streetAddress">Street Address
+            <input id="streetAddress" name="streetAddress" type="text" required></label>
+          <label for="city">City
+            <input id="city" name="city" type="text" required></label>
+          <label for="state">State
+            <input id="state" name="state" type="text" required></label>
+          <label for="zipCode">Zip Code
+            <input id="zipCode" name="zipCode" type="text" required></label>
+
+          <label for="cardNumber">Credit Card Number
+            <input id="cardNumber" name="cardNumber" type="number" required></label>
+          <label for="expDate">Expiration Date
+            <input id="expDate" name="expDate" type="date" required></label>
+          <label for="secCode">Security Code
+            <input id="secCode" name="secCode" type="number" required></label>
+
+          <input type="submit" value="Submit Payment">
+        </form>
       </section>
     </main>
 
