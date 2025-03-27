@@ -32,7 +32,7 @@ function renderCartContents() {
   );
   document
           .querySelector(".cart-total__amount")
-          .textContent = Number(total).toFixed(2) ?? 0;
+          .textContent = total;
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
   document.querySelectorAll(".cart-card__delete").forEach((button) => {
     button.addEventListener("click", deleteCartContent);

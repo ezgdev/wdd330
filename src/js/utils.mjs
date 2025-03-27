@@ -75,7 +75,7 @@ export function priceTotal(itemsList, getPrice) {
   let total = 0;
   itemsList.forEach((item) => total += getPrice(item));
 
-  return `$ ${total}`;
+  return `$ ${total.toFixed(2)}`;
 }
 
 export function cartCount() {
