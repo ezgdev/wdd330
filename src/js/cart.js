@@ -29,7 +29,7 @@ function renderCartContents() {
     cartItems,
     (item) => item.FinalPrice * item.quantity,
   );
-  document.querySelector(".cart-total__amount").textContent = total;
+  document.querySelector(".cart-total__amount").textContent = total.toFixed(2);
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
   document.querySelectorAll(".cart-card__delete").forEach((button) => {
     button.addEventListener("click", deleteCartContent);
@@ -56,5 +56,11 @@ function cartItemTemplate(item) {
 
   return newItem;
 }
+
+document
+  .querySelector("button.checkout")
+  .addEventListener("click", () =>
+    window.location.replace("/checkout/index.html"),
+  );
 
 renderCartContents();
