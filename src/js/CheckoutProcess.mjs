@@ -29,7 +29,7 @@ export default class CheckoutProcess {
         this.key = key;
         this.outpuSelector = outpuSelector;
         this.itemList = [];
-        this.subTotal = 0;
+        this.itemTotal = 0;
         this.shipping = 0;
         this.tax = 0;
         this.orderTotal = 0;
@@ -55,11 +55,11 @@ export default class CheckoutProcess {
     }
 
     calculateTotal() {
-        this.tax = this.subTotal * 0.06;
+        this.tax = this.itemTotal * 0.06;
         this.shipping = 10 + ((this.itemList.length - 1) * 2)
         this.orderTotal = this.tax + this.shipping + this.orderTotal
 
-        this.displayOrderTotals();
+        this.displayOrederTotals();
     }
 
     displayOrederTotals() {
