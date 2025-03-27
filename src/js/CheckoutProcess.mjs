@@ -25,9 +25,8 @@ function packageItems(items) {
 }
 
 export default class CheckoutProcess {
-    constructor (key, outpuSelector) {
+    constructor (key) {
         this.key = key;
-        this.outpuSelector = outpuSelector;
         this.itemList = [];
         this.itemTotal = 0;
         this.shipping = 0;
@@ -57,7 +56,7 @@ export default class CheckoutProcess {
     calculateTotal() {
         this.tax = this.itemTotal * 0.06;
         this.shipping = 10 + ((this.itemList.length - 1) * 2)
-        this.orderTotal = this.tax + this.shipping + this.orderTotal
+        this.orderTotal = this.tax + this.shipping + this.itemTotal
 
         this.displayOrederTotals();
     }
@@ -72,8 +71,8 @@ export default class CheckoutProcess {
         orderTotal.textContent = `$${this.orderTotal.toFixed(2)}`;
     }
 
-    async chekcout(form) {
-        const formData = new FormData(form);
+    async checkout() {
+        const formData = document.forms["checkout"];
 
         const orderData = formDataToJSON(formData);
 
@@ -86,7 +85,7 @@ export default class CheckoutProcess {
         
         try {
             const response = await services.checkout(orderData);
-            console.log(response)
+            console.log(response);
         } catch (err) {
             console.log(err);
         }
