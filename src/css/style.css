@@ -85,7 +85,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -292,37 +292,30 @@ button {
 }
 
 #checkout-form {
-  display: grid;
-  grid-template-areas:
-    "form"
-    "form"
-    "summary"
-    "summary";
-  justify-content: stretch;
-  align-items: first baseline;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+  align-items: center;
 }
 
 .output-summary {
-  grid-area: summary;
-  padding: 1em;
   width: 100%;
 }
 
 .output-summary h3 {
-  padding-left: 1em;
+  text-align: center;
 }
 
 .checkout-form_data {
-  grid-area: form;
-  padding: 1em;
-  width: 100%;
+  padding: .5rem;
+  width: 90%;
+
 }
 
 #order-summary {
   border: 2px solid #f0a868;
   margin: 15px auto;
-  width: 50%;
+  width: 80%;
   padding: 0px 7%;
 }
 
@@ -333,6 +326,7 @@ button {
 }
 
 fieldset {
+
   margin: 20px;
   border-color: #f0a868;
 }
@@ -353,7 +347,7 @@ fieldset {
   border: 1px solid darkorange;
 }
 
-.alert > p {
+.alert>p {
   margin: 0;
 }
 
@@ -384,11 +378,9 @@ legend {
     grid-template-columns: 150px auto 15%;
   }
 
-  #checkout-form {
-    grid-template-areas:
-      "form summary"
-      "form summary";
-  }
+  .checkout-form {}
+
+
 }
 
 footer {
