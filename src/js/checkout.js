@@ -13,6 +13,5 @@ document
 
 document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
   e.preventDefault();
-
   order.checkout();
 });
