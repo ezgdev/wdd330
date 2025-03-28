@@ -85,7 +85,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -353,7 +353,7 @@ fieldset {
   border: 1px solid darkorange;
 }
 
-.alert>p {
+.alert > p {
   margin: 0;
 }
 
