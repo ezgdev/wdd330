@@ -22,7 +22,6 @@ function deleteCartContent(event) {
   renderCartContents();
 }
 
-
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
@@ -30,9 +29,7 @@ function renderCartContents() {
     cartItems,
     (item) => item.FinalPrice * item.quantity,
   );
-  document
-          .querySelector(".cart-total__amount")
-          .textContent = total;
+  document.querySelector(".cart-total__amount").textContent = total;
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
   document.querySelectorAll(".cart-card__delete").forEach((button) => {
     button.addEventListener("click", deleteCartContent);

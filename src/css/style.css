@@ -207,6 +207,20 @@ button {
   color: var(--dark-grey);
 }
 
+/* Style Alerts */
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em;
+  background-color: var(--primary-color);
+  border: 1px solid darkorange;
+}
+.alert > p {
+  margin: 0;
+}
+/* End alert style */
+
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;
