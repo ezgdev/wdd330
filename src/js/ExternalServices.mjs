@@ -4,12 +4,13 @@ function convertToJson(res) {
   if (res.ok) {
     return res.json();
   } else {
-    throw new Error("Bad Response");
+    //throw new Error("Bad Response");
+    throw { name: "servicesError", message: res.message };
   }
 }
 
 export default class ExternalServices {
-  constructor(){
+  constructor(category){
     
   }
   async getData(category) {
@@ -24,13 +25,34 @@ export default class ExternalServices {
   }
   async checkout(payload) {
     const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json" // Fixed capitalization
+        },
+        body: JSON.stringify(payload)
+    };
+
+    try {
+        const response = await fetch(`${baseURL}/checkout/`, options);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await convertToJson(response);
+    } catch (error) {
+        console.error('Checkout failed:', error);
+        throw error; // Re-throw for handling in CheckoutProcess
+    }
+}
+
+  /* async checkout(payload) {
+    const options = {
       method: "POST",
       headers: {
-        "content-Type": "application/json"
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(payload)
-    }
+    };
 
     return await fetch(`${baseURL}/checkout/`, options).then(convertToJson)
-  }
+  } */
 }
