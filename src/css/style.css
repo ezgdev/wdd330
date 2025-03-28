@@ -85,7 +85,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -305,6 +305,13 @@ button {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
   }
+
+  #checkout-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 1rem;
+  }
 }
 
 footer {
@@ -324,8 +331,9 @@ footer {
 }
 
 #checkout-form {
-  width: 70%;
-  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
   padding: 1rem;
 }
 
@@ -356,7 +364,7 @@ fieldset {
   border: 1px solid darkorange;
 }
 
-.alert > p {
+.alert>p {
   margin: 0;
 }
 

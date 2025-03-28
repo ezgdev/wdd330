@@ -15,69 +15,70 @@
       <section class="checkout-form">
         <h2>Review & Place your Order</h2>
         <form id="checkout-form" name="checkout">
-          <input type="hidden" name="orderDate" id="orderDate" />
-          <fieldset>
-            <legend>Shipping</legend>
-            <div class="checkout__name">
-              <div class="form-div">
-                <label for="fname">First Name</label>
-                <input type="text" name="fname" id="fname" required />
+          <section checkout-form_data>
+            <input type="hidden" name="orderDate" id="orderDate" />
+            <fieldset>
+              <legend>Shipping</legend>
+              <div class="checkout__name">
+                <div class="form-div">
+                  <label for="fname">First Name</label>
+                  <input type="text" name="fname" id="fname" required />
+                </div>
+                <div class="form-div">
+                  <label for="lname">Last Name</label>
+                  <input type="text" name="lname" id="lname" required />
+                </div>
               </div>
-              <div class="form-div">
-                <label for="lname">Last Name</label>
-                <input type="text" name="lname" id="lname" required />
-              </div>
-            </div>
-          </fieldset>
+            </fieldset>
 
-          <fieldset>
-            <legend>Address</legend>
-            <div class="checkout__address">
-              <div class="form-div">
-                <label for="street">Street Name</label>
-                <input type="text" name="street" id="street" required />
+            <fieldset>
+              <legend>Address</legend>
+              <div class="checkout__address">
+                <div class="form-div">
+                  <label for="street">Street Name</label>
+                  <input type="text" name="street" id="street" required />
+                </div>
+                <div class="form-div">
+                  <label for="city">City</label>
+                  <input type="text" name="city" id="city" required />
+                </div>
+                <div class="form-div">
+                  <label for="state">State</label>
+                  <input type="text" name="state" id="state" required />
+                </div>
+                <div class="form-div">
+                  <label for="zip">Zip Code</label>
+                  <input type="text" name="zip" id="zip" required />
+                </div>
               </div>
-              <div class="form-div">
-                <label for="city">City</label>
-                <input type="text" name="city" id="city" required />
-              </div>
-              <div class="form-div">
-                <label for="state">State</label>
-                <input type="text" name="state" id="state" required />
-              </div>
-              <div class="form-div">
-                <label for="zip">Zip Code</label>
-                <input type="text" name="zip" id="zip" required />
-              </div>
-            </div>
-          </fieldset>
+            </fieldset>
 
-          <fieldset>
-            <legend>Payment</legend>
-            <div class="form-div">
-              <label for="cardNumber">Credit Card Number</label>
-              <input
-                type="text"
-                name="cardNumber"
-                id="cardNumber"
-                value="1234123412341234"
-              />
-            </div>
-            <div class="form-div">
-              <label for="expiration">Expiration Date</label>
-              <input
-                type="text"
-                name="expiration"
-                id="expiration"
-                value="04/28"
-              />
-            </div>
-            <div class="form-div">
-              <label for="code">Security Number</label>
-              <input type="text" name="code" id="code" value="123" />
-            </div>
-          </fieldset>
-
+            <fieldset>
+              <legend>Payment</legend>
+              <div class="form-div">
+                <label for="cardNumber">Credit Card Number</label>
+                <input
+                  type="text"
+                  name="cardNumber"
+                  id="cardNumber"
+                  value="1234123412341234"
+                />
+              </div>
+              <div class="form-div">
+                <label for="expiration">Expiration Date</label>
+                <input
+                  type="text"
+                  name="expiration"
+                  id="expiration"
+                  value="04/28"
+                />
+              </div>
+              <div class="form-div">
+                <label for="code">Security Number</label>
+                <input type="text" name="code" id="code" value="123" />
+              </div>
+            </fieldset>
+          </section>
           <section class="output-summary">
             <div id="order-summary">
               <h3>Order Summary</h3>
@@ -99,8 +100,8 @@
                 <p id="orderTotal"></p>
               </div>
             </div>
+            <button type="submit" id="checkoutSubmit">Place Order</button>
           </section>
-          <button type="submit" id="checkoutSubmit">Place Order</button>
         </form>
       </section>
     </main>
