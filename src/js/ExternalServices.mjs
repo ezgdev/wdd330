@@ -23,28 +23,8 @@ export default class ExternalServices {
     const data = await convertToJson(response);
     return data.Result;
   }
+
   async checkout(payload) {
-    const options = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json" // Fixed capitalization
-        },
-        body: JSON.stringify(payload)
-    };
-
-    try {
-        const response = await fetch(`${baseURL}/checkout/`, options);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return await convertToJson(response);
-    } catch (error) {
-        console.error('Checkout failed:', error);
-        throw error; // Re-throw for handling in CheckoutProcess
-    }
-}
-
-  /* async checkout(payload) {
     const options = {
       method: "POST",
       headers: {
@@ -54,5 +34,5 @@ export default class ExternalServices {
     };
 
     return await fetch(`${baseURL}/checkout/`, options).then(convertToJson)
-  } */
+  } 
 }
