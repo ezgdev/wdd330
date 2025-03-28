@@ -85,7 +85,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -307,9 +307,8 @@ button {
 }
 
 .checkout-form_data {
-  padding: .5rem;
+  padding: 0.5rem;
   width: 90%;
-
 }
 
 #order-summary {
@@ -326,7 +325,6 @@ button {
 }
 
 fieldset {
-
   margin: 20px;
   border-color: #f0a868;
 }
@@ -347,7 +345,7 @@ fieldset {
   border: 1px solid darkorange;
 }
 
-.alert>p {
+.alert > p {
   margin: 0;
 }
 
@@ -378,9 +376,8 @@ legend {
     grid-template-columns: 150px auto 15%;
   }
 
-  .checkout-form {}
-
-
+  .checkout-form {
+  }
 }
 
 footer {
