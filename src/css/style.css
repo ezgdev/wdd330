@@ -244,6 +244,16 @@ button {
   width: 100%;
 }
 
+.product__color-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid green;
+}
+
+.product__color-list img {
+  width: 100%;
+}
+
 /* Start cart list card styles */
 .cart-card {
   display: grid;

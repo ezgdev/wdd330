@@ -1,22 +1,31 @@
 import { getLocalStorage ,setLocalStorage, } from "./utils.mjs";
 import showAlert from "./customAlert";
 
-function productDetailsTemplate(product) {
+function productDetailsTemplate(product, colorIndex = 0) {
     return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
-    <h2 class="divider">${product.NameWithoutBrand}</h2>
-    <img
-        class="divider"
-        src="${product.Images.PrimaryLarge}"
-        alt="${product.NameWithoutBrand}"
-    />
-    <p class="product-card__price">$${product.FinalPrice}</p>
-    <p class="product__color">${product.Colors[0].ColorName}</p>
-    <p class="product__description">
-    ${product.DescriptionHtmlSimple}
-    </p>
-    <div class="product-detail__add">
-        <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
-    </div></section>`;
+        <h2 class="divider">${product.NameWithoutBrand}</h2>
+        <img
+            class="divider"
+            src="${product.Colors[colorIndex].ColorPreviewImageSrc}"
+            alt="${product.NameWithoutBrand}"
+        />
+        <p class="product-card__price">$${product.FinalPrice}</p>
+        <p class="product__color">${product.Colors[colorIndex].ColorName}</p>
+        <div class="product__color-list">
+            ${product.Colors.map((color, index) => `
+                <img 
+                    class="color-option"
+                    data-index="${index}" 
+                    src="${color.ColorChipImageSrc}"
+                    alt="${color.ColorName}" />
+                `).join("")}
+        </div>
+        <p class="product__description">
+        ${product.DescriptionHtmlSimple}
+        </p>
+        <div class="product-detail__add">
+            <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
+        </div></section>`;
 }
 
 
@@ -25,6 +34,7 @@ export default class ProductDetails {
         this.productId = productId;
         this.product = {};
         this.dataSource = dataSource;
+        this.colorIndex = 0;
     }
     async init() {
         this.product = await this.dataSource.findProductById(this.productId);
@@ -32,6 +42,14 @@ export default class ProductDetails {
         document
             .getElementById("addToCart")
             .addEventListener("click", this.addToCart.bind(this));
+
+        document.addEventListener("click", (event) => {
+            if (event.target.classList.contains("color-option")) {
+                this.colorIndex = parseInt(event.target.dataset.index, 10);
+                setLocalStorage("colorIndex", this.colorIndex);
+                window.location.reload();
+            }
+        })
     }
     updateCartListWithQuantity(){
         const itemList = getLocalStorage("so-cart") || [];
@@ -56,11 +74,16 @@ export default class ProductDetails {
         }, 1000);
         
     }
+
     renderProductDetails(selector) {
         const element = document.querySelector(selector);
+        let localIndex = getLocalStorage("colorIndex") || 0;
+        if (this.product.Colors[localIndex]) {
+            this.colorIndex = localIndex
+        }
         element.insertAdjacentHTML(
             "afterBegin",
-            productDetailsTemplate(this.product)
+            productDetailsTemplate(this.product, this.colorIndex)
         );
     }
 }
