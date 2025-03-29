@@ -1,4 +1,4 @@
-import { renderListWithTemplate } from "./utils.mjs";
+import { renderListWithTemplate, setLocalStorage } from "./utils.mjs";
 
 function productCardTemplate(product) {
     return `<li class="product-card">
