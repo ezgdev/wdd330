@@ -18,4 +18,5 @@ document.querySelector("#checkout-form").addEventListener("submit", (e) => {
   if (chk_status) {
     order.checkout();
   }
+  alert("Error en el archivo");
 });
