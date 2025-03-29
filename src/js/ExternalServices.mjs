@@ -10,16 +10,14 @@ function convertToJson(res) {
 }
 
 export default class ExternalServices {
-  constructor() {
-    this.baseURL = baseURL;
-  }
+  constructor() {}
   async getData(category) {
-    const response = await fetch(`${this.baseURL}/products/search/${category}`);
+    const response = await fetch(`${baseURL}/products/search/${category}`);
     const data = await convertToJson(response);
     return data.Result;
   }
   async findProductById(id) {
-    const response = await fetch(`${this.baseURL}/product/${id}`);
+    const response = await fetch(`${baseURL}/product/${id}`);
     const data = await convertToJson(response);
     return data.Result;
   }
@@ -33,8 +31,6 @@ export default class ExternalServices {
       body: JSON.stringify(payload),
     };
 
-    return await fetch(`${this.baseURL}/checkout/`, options).then(
-      convertToJson,
-    );
+    return await fetch(`${baseURL}/checkout/`, options).then(convertToJson);
   }
 }

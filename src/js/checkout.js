@@ -10,13 +10,12 @@ document
   .querySelector("#zip")
   .addEventListener("blur", order.calculateTotal.bind(order));
 
-document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
+document.querySelector("#checkout-form").addEventListener("submit", (e) => {
   e.preventDefault();
   const myForm = document.forms[0];
   const chk_status = myForm.checkValidity();
   myForm.reportValidity();
-  if (!chk_status) {
+  if (chk_status) {
     order.checkout();
   }
-  alert("Error en el archivo");
 });
