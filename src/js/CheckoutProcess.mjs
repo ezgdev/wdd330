@@ -58,11 +58,10 @@ export default class CheckoutProcess {
   calculateTotal() {
     this.tax = this.itemTotal * 0.06;
     this.shipping = 10 + (this.itemList.length - 1) * 2;
-    this.orderTotal = (
+    this.orderTotal =
       parseFloat(this.itemTotal) +
       parseFloat(this.shipping) +
-      parseFloat(this.tax)
-    );
+      parseFloat(this.tax);
     this.displayOrederTotals();
   }
 
@@ -86,23 +85,16 @@ export default class CheckoutProcess {
     orderData.shipping = this.shipping;
     orderData.tax = this.tax;
     orderData.items = packageItems(this.itemList);
-    console.log(orderData);
-
     try {
       const response = await services.checkout(orderData);
       console.log(response);
       setLocalStorage("so-cart", []);
-      location.assign("/src/checkout/success.html");
-      //window.location.href="../checkout/success.html";
+      location.assign("success.html");
     } catch (err) {
-      console.error("Checkout failed:", err);
-      removeAllAlerts();
-      alertMessage(`Checkout failed: ${err.message}`);
-      throw err;
-      /* console.log(err);
+      console.log(err);
       removeAllAlerts();
       alertMessage(err.message);
-      throw { name: "Service Error", message: err.message }; */
+      throw { name: "Service Error", message: err.message };
     }
   }
 }

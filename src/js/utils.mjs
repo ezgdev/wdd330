@@ -73,7 +73,7 @@ export async function loadHeaderFooter() {
 
 export function priceTotal(itemsList, getPrice) {
   let total = 0;
-  itemsList.forEach((item) => total += getPrice(item));
+  itemsList.forEach((item) => (total += getPrice(item)));
 
   return `$ ${total.toFixed(2)}`;
 }
@@ -89,18 +89,23 @@ export function cartCount() {
   }
 }
 
-export function alertMessage(message, scroll = true){
+export function alertMessage(message, scroll = true, duration = 3000) {
   const alert = document.createElement("div");
   alert.classList.add("alert");
   alert.innerHTML = `<p>${message}</p><span>X</span>`;
-  alert.addEventListener("click", function(e) {
-    if (e.target.tagName == "SPAN") {
+  alert.addEventListener("click", function (e) {
+    if (e.target.tagName == "span") {
       main.removeChild(this);
     }
   });
   const main = document.querySelector("main");
   main.prepend(alert);
   if (scroll) window.scrollTo(0, 0);
+
+  // left this here to show how you could remove the alert automatically after a certain amount of time.
+  setTimeout(function () {
+    main.removeChild(alert);
+  }, duration);
 }
 
 export function removeAllAlerts() {
