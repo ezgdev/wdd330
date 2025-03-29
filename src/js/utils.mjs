@@ -89,7 +89,7 @@ export function cartCount() {
   }
 }
 
-export function alertMessage(message, scroll = true, duration = 3000) {
+export function alertMessage(message, scroll = true, duration = 4000) {
   const alert = document.createElement("div");
   alert.classList.add("alert");
   alert.innerHTML = `<p>${message}</p><span>X</span>`;
