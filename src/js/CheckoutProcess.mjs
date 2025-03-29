@@ -91,10 +91,11 @@ export default class CheckoutProcess {
       setLocalStorage("so-cart", []);
       location.assign("/checkout/success.html");
     } catch (err) {
-      console.log(err);
       removeAllAlerts();
-      alertMessage(err.message);
-      throw { name: "Service Error", message: err.message };
+      for (let message in err.message) {
+        alertMessage(err.message[message]);
+      }
+      console.log(err);
     }
   }
 }
