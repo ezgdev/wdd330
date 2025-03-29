@@ -10,7 +10,7 @@ document
   .querySelector("#zip")
   .addEventListener("blur", order.calculateTotal.bind(order));
 
-document.querySelector("#checkout-form").addEventListener("submit", (e) => {
+document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
   e.preventDefault();
   const myForm = document.forms[0];
   const chk_status = myForm.checkValidity();
