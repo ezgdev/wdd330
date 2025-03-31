@@ -26,4 +26,4 @@ _BYU-Pathway Worldwide improves lives through access to spiritually based, onlin
 
 ### Netlify app link
 
-https://storied-maamoul-41c474.netlify.app/
+https://storied-maamoul-41c474.netlify.app
