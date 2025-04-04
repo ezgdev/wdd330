@@ -3,6 +3,8 @@ import CheckoutProcess from "./CheckoutProcess.mjs";
 
 loadHeaderFooter();
 
+checkout.init(); // Initialize the process to calculate the item subtotal
+
 // Initialize the CheckoutProcess with key 'so-cart' and output selectors
 const checkout = new CheckoutProcess("so-cart", {
   subtotal: "#subtotal",
@@ -10,8 +12,6 @@ const checkout = new CheckoutProcess("so-cart", {
   tax: "#tax",
   total: "#total",
 });
-
-checkout.init(); // Initialize the process to calculate the item subtotal
 
 // Add an event listener for ZIP code input to trigger the order total calculation
 document.querySelector("#zip").addEventListener("input", (event) => {

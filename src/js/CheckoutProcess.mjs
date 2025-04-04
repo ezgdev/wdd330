@@ -21,14 +21,21 @@ export default class CheckoutProcess {
   // Initialize the checkout process by loading the cart and calculating the item total
   init() {
     this.list = getLocalStorage(this.key) ?? []; // Load the cart items from localStorage
+    // Filtrar elementos inválidos
+    this.list = this.list.filter((item) => item?.Result != null);
     this.calculateItemSummary(); // Calculate and display the subtotal on page load
   }
 
   // Calculate and display the item subtotal
   calculateItemSummary() {
     this.itemTotal = this.list.reduce((total, item) => {
-      const quantity = item.Result.Quantity || 1;
-      return total + item.Result.FinalPrice * quantity; // Sum the total price of items in the cart
+      //   const quantity = item.Result.Quantity || 1;
+      //   return total + item.Result.FinalPrice * quantity; // Sum the total price of items in the cart
+      // }, 0);
+      // Usar operador opcional y valor por defecto
+      const quantity = item?.Result?.Quantity ?? 1;
+      const price = item?.Result?.FinalPrice ?? 0;
+      return total + price * quantity;
     }, 0);
 
     // Display the item subtotal in the output section (e.g., '#subtotal')
