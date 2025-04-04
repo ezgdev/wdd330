@@ -20,9 +20,9 @@ export default class CheckoutProcess {
 
   // Initialize the checkout process by loading the cart and calculating the item total
   init() {
-    this.list = getLocalStorage(this.key) ?? []; // Load the cart items from localStorage
+    this.list = getLocalStorage("so-cart") ?? []; // Load the cart items from localStorage
     // Filtrar elementos inválidos
-    this.list = this.list.filter((item) => item?.Result != null);
+    //this.list = this.list.filter((item) => item?.Result != null);
     this.calculateItemSummary(); // Calculate and display the subtotal on page load
   }
 
@@ -116,7 +116,7 @@ export default class CheckoutProcess {
       tax: this.tax.toFixed(2),
     };
 
-    //console.log("OrderData:", orderData);
+    console.log("OrderData:", orderData);
 
     //Send the order data to the server
     const externalServices = new ExternalServices();

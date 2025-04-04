@@ -3,8 +3,6 @@ import CheckoutProcess from "./CheckoutProcess.mjs";
 
 loadHeaderFooter();
 
-checkout.init(); // Initialize the process to calculate the item subtotal
-
 // Initialize the CheckoutProcess with key 'so-cart' and output selectors
 const checkout = new CheckoutProcess("so-cart", {
   subtotal: "#subtotal",
@@ -12,6 +10,8 @@ const checkout = new CheckoutProcess("so-cart", {
   tax: "#tax",
   total: "#total",
 });
+
+checkout.init(); // Initialize the process to calculate the item subtotal
 
 // Add an event listener for ZIP code input to trigger the order total calculation
 document.querySelector("#zip").addEventListener("input", (event) => {
@@ -80,7 +80,7 @@ document
     try {
       await checkout.checkout(myForm);
       //localStorage.removeItem("so-cart");
-      window.location.href = "/success.html";
+      //window.location.href = "/checkout/success.html";
     } catch (error) {
       alertMessage("Error when processing the order: " + error.message, true);
     }
@@ -93,12 +93,19 @@ function isValidCardNumber(cardNumber) {
 
 // validate expiration date (MM/YY) year must be current or future year
 function isValidExpirationDate(expirationDate) {
-  if (!/^\d{2}\/\d{2}$/.test(expirationDate)) return false; // Validar formato MM/YY
+  if (!/^\d{2}\/\d{2}$/.test(expirationDate)) return false;
+
   const [month, year] = expirationDate.split("/");
-  const expYear = parseInt("20" + year);
-  const expMonth = parseInt(month) - 1; // Mes en JS es 0-indexado
-  const expDate = new Date(expYear, expMonth + 1, 0); // Último día del mes
-  return expDate > new Date();
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear() % 100; // Últimos 2 dígitos
+  const currentMonth = currentDate.getMonth() + 1; // Mes actual (1-12)
+
+  // Validar año y mes
+  if (parseInt(year) < currentYear) return false;
+  if (parseInt(year) === currentYear && parseInt(month) < currentMonth)
+    return false;
+
+  return true;
 }
 
 /*function isValidExpirationDate(expirationDate) {
