@@ -37,11 +37,7 @@ export default class ExternalServices {
       const data = await convertToJson(response);
       return data;
     } catch (error) {
-      if (error.name === "servicesError") {
-        console.error("Error submitting order:", error.message);
-      } else {
-        console.error("Unknown error occurred:", error);
-      }
+      throw new Error("Error en el servidor: " + error.message);
     }
   }
 }

@@ -98,7 +98,7 @@ export default class CheckoutProcess {
       zip: formData.zip,
       cardNumber: formData.cardNumber,
       expiration: formData.expiration,
-      code: formData.securityCode,
+      code: formData.code,
       items: items,
       orderTotal: this.orderTotal.toFixed(2),
       shipping: this.shipping,
@@ -111,7 +111,8 @@ export default class CheckoutProcess {
     const externalServices = new ExternalServices();
     try {
       const response = await externalServices.checkout(orderData); // Submit the order
-      setLocalStorage("so-cart", []);
+      setLocalStorage("so-cart", []); // Clear the cart in localStorage
+      removeAllAlerts(); // Remove any existing alerts
       location.assign("/checkout/success.html");
       return response;
     } catch (err) {
@@ -119,7 +120,6 @@ export default class CheckoutProcess {
       for (let message in err.message) {
         alertMessage(err.message[message]);
       }
-      console.log(err);
     }
   }
 }

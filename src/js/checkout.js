@@ -29,52 +29,75 @@ document.querySelector("#zip").addEventListener("input", (event) => {
 
 // Handle form submission for checkout
 document
-  .querySelector("#checkoutSubmit")
+  .querySelector("#checkout-form")
   .addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    //Get the form element
-    const myForm = document.forms["checkout"];
+    //Get the form from the event.
+    const myForm = event.target;
+
     // Check if the form is valid
-    const formIsValid = myForm.checkValidity();
+    const isFormValid = myForm.checkValidity();
+    myForm.reportValidity(); // Show validation messages
+    if (!isFormValid) {
+      alertMessage("Please fill in all required fields.", true);
+      return;
+    }
+
+    // Check if the ZIP code is valid
+    const zipCode = myForm.zip.value;
+    if (zipCode.length !== 5) {
+      alertMessage("Please enter a valid ZIP code.", true);
+      return;
+    }
 
     // Validate card number and expiration date manually
-    const cardNumber = myForm["cardNumber"].value;
-    const expirationDate = myForm["expiration"].value;
+    const cardNumber = myForm.cardNumber.value;
+    const expirationDate = myForm.expiration.value;
 
     const isCardNumberValid = isValidCardNumber(cardNumber);
     const isExpirationValid = isValidExpirationDate(expirationDate);
 
     if (!isCardNumberValid) {
       alertMessage("Invalid Card Number", true);
+      return;
     }
 
     if (!isExpirationValid) {
       alertMessage("Invalid Expiration Date", true);
+      return;
     }
 
-    if (formIsValid && isCardNumberValid && isExpirationValid) {
-      try {
-        await checkout.checkout(myForm);
-        localStorage.removeItem("so-cart");
-        window.location.href = "/checkout/success.html";
-      } catch (error) {
-        throw new Error("Order failed", error);
-      }
+    // Show validation messages
+    try {
+      await checkout.checkout(myForm);
+      //localStorage.removeItem("so-cart");
+      window.location.href = "/checkout/success.html";
+    } catch (error) {
+      alertMessage("Error when processing the order: " + error.message, true);
     }
   });
 
 function isValidCardNumber(cardNumber) {
-  // Card number validation logic (e.g., Luhn algorithm)
-  return /^[0-9]{16}$/.test(cardNumber);
+  // Card number validation logic (let 13-19 digits)
+  return /^\d{13,19}$/.test(cardNumber);
 }
 
 // validate expiration date (MM/YY) year must be current or future year
 function isValidExpirationDate(expirationDate) {
+  if (!/^\d{2}\/\d{2}$/.test(expirationDate)) return false; // Validar formato MM/YY
+  const [month, year] = expirationDate.split("/");
+  const expYear = parseInt("20" + year);
+  const expMonth = parseInt(month) - 1; // Mes en JS es 0-indexado
+  const expDate = new Date(expYear, expMonth + 1, 0); // Último día del mes
+  return expDate > new Date();
+}
+
+/*function isValidExpirationDate(expirationDate) {
   const [month, year] = expirationDate.split("/");
   const expDate = new Date(`20${year}-${month}-01`);
   return expDate > new Date();
-}
+}*/
 
 /*
 const order = new CheckoutProcess("so-cart");
