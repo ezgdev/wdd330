@@ -77,9 +77,7 @@ export default class CheckoutProcess {
 
   async checkout() {
     const formData = document.forms["checkout"];
-
     const orderData = formDataToJSON(formData);
-
     orderData.orderDate = new Date().toISOString();
     orderData.orderTotal = this.orderTotal;
     orderData.shipping = this.shipping;
