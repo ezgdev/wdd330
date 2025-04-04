@@ -32,6 +32,16 @@ export default class ExternalServices {
       body: JSON.stringify(payload),
     };
 
-    return await fetch(`${baseURL}/checkout/`, options).then(convertToJson);
+    try {
+      const response = await fetch(`${baseURL}/checkout/`, options);
+      const data = await convertToJson(response);
+      return data;
+    } catch (error) {
+      if (error.name === "servicesError") {
+        console.error("Error submitting order:", error.message);
+      } else {
+        console.error("Unknown error occurred:", error);
+      }
+    }
   }
 }
