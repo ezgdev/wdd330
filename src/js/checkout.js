@@ -38,6 +38,11 @@ document
 
     //Get the form from the event.
     const myForm = event.target;
+    const zipyCode = myForm.zip.value;
+    // Forzar cálculo si el ZIP es válido
+    if (zipyCode.length === 5) {
+      checkout.calculateOrderTotal();
+    }
 
     // Check if the form is valid
     const isFormValid = myForm.checkValidity();
@@ -75,7 +80,7 @@ document
     try {
       await checkout.checkout(myForm);
       //localStorage.removeItem("so-cart");
-      window.location.href = "/checkout/success.html";
+      window.location.href = "/success.html";
     } catch (error) {
       alertMessage("Error when processing the order: " + error.message, true);
     }
@@ -83,7 +88,7 @@ document
 
 function isValidCardNumber(cardNumber) {
   // Card number validation logic (let 13-19 digits)
-  return /^\d{13,19}$/.test(cardNumber);
+  return /^\d{13,19}$/.test(cardNumber.replace(/\s/g, "")); // Eliminar espacios
 }
 
 // validate expiration date (MM/YY) year must be current or future year
