@@ -38,6 +38,10 @@ export default class CheckoutProcess {
 
   // Calculate shipping, tax, and total, and display them after ZIP code is entered
   calculateOrderTotal() {
+    if (this.list.length === 0) {
+      alertMessage("El carrito está vacío", true);
+      return;
+    }
     this.shipping = 10 + (this.list.length - 1) * 2; // $10 for the first item, $2 for each additional item
     this.tax = this.itemTotal * 0.06; // 6% sales tax
 
