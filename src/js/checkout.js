@@ -40,12 +40,6 @@ document
 
     //Get the form from the event.
     const myForm = event.target;
-    const zipyCode = myForm.zip.value;
-
-    // Forzar cálculo si el ZIP es válido
-    if (zipyCode.length === 5) {
-      checkout.calculateOrderTotal();
-    }
 
     // Check if the form is valid
     const isFormValid = myForm.checkValidity();
