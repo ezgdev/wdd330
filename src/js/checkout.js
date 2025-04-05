@@ -26,11 +26,12 @@ document.querySelector("#zip").addEventListener("input", (event) => {
   // If ZIP code has 5 digits, calculate shipping, tax, and total
   if (zipCode.length === 5) {
     checkout.calculateOrderTotal();
-  } else if (zipCode === "") {
+  }
+  /*else if (zipCode === "") {
     document.querySelector(checkout.outputSelector.shipping).innerText = "0.00";
     document.querySelector(checkout.outputSelector.tax).innerText = "0.00";
     document.querySelector(checkout.outputSelector.total).innerText = "0.00";
-  }
+  }*/
 });
 
 // Handle form submission for checkout
