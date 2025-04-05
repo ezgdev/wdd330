@@ -44,7 +44,7 @@ document.querySelector("#zip").addEventListener("input", (event) => {
     document.querySelector(checkout.outputSelector.total).innerText = "0.00";
   }
 });
-}
+
 // Handle form submission for checkout
 document
   .querySelector("#checkout-form")
@@ -89,7 +89,7 @@ document
       alertMessage("Error when processing the order: " + error.message, true);
     }
   });
-
+}
 function isValidCardNumber(cardNumber) {
   // Card number validation logic (let 13-19 digits)
   return /^\d{13,19}$/.test(cardNumber.replace(/\s/g, "")); // Eliminar espacios
