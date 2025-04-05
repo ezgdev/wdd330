@@ -18,8 +18,6 @@ const checkout = new CheckoutProcess("so-cart", {
   total: "#total",
 });
 
-
-
 // Add an event listener for ZIP code input to trigger the order total calculation
 document.querySelector("#zip").addEventListener("input", (event) => {
   const zipCode = event.target.value;
