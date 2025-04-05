@@ -33,8 +33,8 @@ export default class CheckoutProcess {
       //   return total + item.Result.FinalPrice * quantity; // Sum the total price of items in the cart
       // }, 0);
       // Usar operador opcional y valor por defecto
-      const quantity = item?.Result?.Quantity ?? 1;
-      const price = item?.Result?.FinalPrice ?? 0;
+      const quantity = item?.quantity ?? 1;
+      const price = item?.FinalPrice ?? 0;
       return total + price * quantity;
     }, 0);
 
@@ -84,12 +84,20 @@ export default class CheckoutProcess {
   // Prepare the items part of the order data
   packageItems(items) {
     return items.map((item) => ({
+      id: item.Id,
+      name: item.Name,
+      price: item.FinalPrice,
+      quantity: 1,
+    }));
+  }
+  /*packageItems(items) {
+    return items.map((item) => ({
       id: item.Result.Id, // Product ID
       name: item.Result.Name, // Product name
       price: item.Result.FinalPrice, // Product price
       quantity: item.Result.Quantity || 1, // Quantity (default to 1 if not available)
     }));
-  }
+  }*/
 
   // Handle the checkout process (submit the order)
   async checkout(form) {
