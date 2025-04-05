@@ -33,9 +33,7 @@ document.querySelector("#zip").addEventListener("input", (event) => {
 });
 
 // Handle form submission for checkout
-document
-  .querySelector("#checkout-form")
-  .addEventListener("submit", async (event) => {
+document.querySelector("#checkout-form").addEventListener("submit", async (event) => {
     event.preventDefault();
 
     //Get the form from the event.

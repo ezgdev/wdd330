@@ -16,7 +16,7 @@ export default class CheckoutProcess {
 
   // Initialize the checkout process by loading the cart and calculating the item total
   init() {
-    this.list = getLocalStorage(this.key) ?? []; // Load the cart items from localStorage
+    this.list = getLocalStorage("so-cart") ?? []; // Load the cart items from localStorage
     this.calculateItemSummary(); // Calculate and display the subtotal on page load
   }
 
