@@ -20,7 +20,7 @@ const checkout = new CheckoutProcess("so-cart", {
 checkout.init(); // Initialize the process to calculate the item subtotal
 
 // Add an event listener for ZIP code input to trigger the order total calculation
-document.querySelector("#zip").addEventListener("input", (event) => {
+document.getElementById("zip").addEventListener("input", (event) => {
   while (event.target.value.length < 5) {
     event.target.value = event.target.value + "0";
   }
