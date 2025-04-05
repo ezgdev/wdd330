@@ -123,8 +123,8 @@ export default class CheckoutProcess {
     //Send the order data to the server
     const externalServices = new ExternalServices();
     try {
-      const response = await externalServices.checkout(orderData); // Submit the order
-      return response;
+      await externalServices.checkout(orderData); // Submit the order
+      //return response;
     } catch (err) {
       alertMessage("Error when processing the order: ", true);
     }
