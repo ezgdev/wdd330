@@ -10,7 +10,7 @@ loadHeaderFooter();
 
 // Initialize the CheckoutProcess with key 'so-cart' and output selectors
 const checkout = new CheckoutProcess("so-cart", {
-  subtotal: "#subTotal",
+  subTotal: "#subTotal",
   shipping: "#shipping",
   tax: "#tax",
   total: "#total",
