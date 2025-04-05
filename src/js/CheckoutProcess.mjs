@@ -117,7 +117,7 @@ export default class CheckoutProcess {
     };
 
     console.log("OrderData:", orderData);
-
+    alert("OrderData:", orderData);
     //Send the order data to the server
     const externalServices = new ExternalServices();
     try {
