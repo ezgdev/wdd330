@@ -3,13 +3,25 @@ import {
   alertMessage,
   setLocalStorage,
   removeAllAlerts,
+  getLocalStorage,
 } from "./utils.mjs";
 
 import CheckoutProcess from "./CheckoutProcess.mjs";
 
 loadHeaderFooter();
+document.addEventListener("DOMContentLoaded", getLocalStorage("so-cart"));
+{
+  // This function will be called when the DOM is fully loaded
+  // You can safely manipulate DOM elements here
+  // For example, you can use document.querySelector or document.getElementById
+  // to select elements and modify them
+  // Example:
+  let element = document.getElementById("subtotal");
+  if (element) {
+    element.innerText = "Estapresentet";
+  }
+}
 
-checkout.init(); // Initialize the process to calculate the item subtotal
 // Initialize the CheckoutProcess with key 'so-cart' and output selectors
 const checkout = new CheckoutProcess("so-cart", {
   subtotal: "#subtotal",
@@ -17,6 +29,8 @@ const checkout = new CheckoutProcess("so-cart", {
   tax: "#tax",
   total: "#total",
 });
+
+checkout.init(); // Initialize the process to calculate the item subtotal
 
 // Add an event listener for ZIP code input to trigger the order total calculation
 document.querySelector("#zip").addEventListener("input", (event) => {
