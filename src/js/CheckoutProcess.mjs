@@ -11,6 +11,7 @@ export default class CheckoutProcess {
     this.tax = 0;
     this.orderTotal = 0;
     this.subtotal = 0;
+    this.total = 0;
   }
 
   // Initialize the checkout process by loading the cart and calculating the item total
