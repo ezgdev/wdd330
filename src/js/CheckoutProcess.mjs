@@ -118,8 +118,8 @@ export default class CheckoutProcess {
       tax: this.tax.toFixed(2),
     };
 
-    console.log("OrderData:", orderData);
-    alert("OrderData:", orderData);
+    //console.log("OrderData:", orderData); To debug
+
     //Send the order data to the server
     const externalServices = new ExternalServices();
     try {
