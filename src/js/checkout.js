@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", getLocalStorage("so-cart"));
   if (element) {
     element.innerText = "Estapresentet";
   }
-}
+
 
 // Initialize the CheckoutProcess with key 'so-cart' and output selectors
 const checkout = new CheckoutProcess("so-cart", {
@@ -44,7 +44,7 @@ document.querySelector("#zip").addEventListener("input", (event) => {
     document.querySelector(checkout.outputSelector.total).innerText = "0.00";
   }
 });
-
+}
 // Handle form submission for checkout
 document
   .querySelector("#checkout-form")
