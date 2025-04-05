@@ -1,4 +1,9 @@
-import { loadHeaderFooter, alertMessage } from "./utils.mjs";
+import {
+  loadHeaderFooter,
+  alertMessage,
+  setLocalStorage,
+  removeAllAlerts,
+} from "./utils.mjs";
 import CheckoutProcess from "./CheckoutProcess.mjs";
 
 loadHeaderFooter();
@@ -79,8 +84,9 @@ document
     // Show validation messages
     try {
       await checkout.checkout(myForm);
-      //localStorage.removeItem("so-cart");
-      //window.location.href = "/checkout/success.html";
+      setLocalStorage("so-cart", []);
+      removeAllAlerts();
+      window.location.href = "/checkout/success.html";
     } catch (error) {
       alertMessage("Error when processing the order: " + error.message, true);
     }

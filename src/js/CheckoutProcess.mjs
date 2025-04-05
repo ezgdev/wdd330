@@ -1,10 +1,4 @@
-import {
-  getLocalStorage,
-  setLocalStorage,
-  alertMessage,
-  removeAllAlerts,
-} from "./utils.mjs";
-
+import { getLocalStorage, alertMessage } from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 
 export default class CheckoutProcess {
@@ -130,15 +124,9 @@ export default class CheckoutProcess {
     const externalServices = new ExternalServices();
     try {
       const response = await externalServices.checkout(orderData); // Submit the order
-      setLocalStorage("so-cart", []); // Clear the cart in localStorage
-      removeAllAlerts(); // Remove any existing alerts
-      //location.assign("/checkout/success.html");
       return response;
     } catch (err) {
-      removeAllAlerts();
-      for (let message in err.message) {
-        alertMessage(err.message[message]);
-      }
+      alertMessage("Error when processing the order: ", true);
     }
   }
 }
