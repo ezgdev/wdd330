@@ -29,13 +29,15 @@ export default class CheckoutProcess {
       return total + price * quantity;
     }, 0);
 
-     // Validar si el elemento existe antes de actualizarlo
-        const subtotalElement = document.querySelector(this.outputSelector.subtotal);
-        if (subtotalElement) {
-          subtotalElement.innerText = this.itemTotal.toFixed(2);
-        } else {
-          alertMessage("Elemento #subtotal no encontrado en el DOM", true);
-        }
+    // Validar si el elemento existe antes de actualizarlo
+    const subtotalElement = document.querySelector(
+      this.outputSelector.subtotal,
+    );
+    if (subtotalElement) {
+      subtotalElement.innerText = this.itemTotal.toFixed(2);
+    } else {
+      alertMessage("Elemento #subtotal no encontrado en el DOM", true);
+    }
     // Display the item subtotal in the output section (e.g., '#subtotal')
     // document.querySelector(this.outputSelector.subtotal).innerText =
     // this.itemTotal.toFixed(2);
