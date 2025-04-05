@@ -15,17 +15,12 @@ export default class CheckoutProcess {
   // Initialize the checkout process by loading the cart and calculating the item total
   init() {
     this.list = getLocalStorage("so-cart") ?? []; // Load the cart items from localStorage
-    // Filtrar elementos inválidos
-    //this.list = this.list.filter((item) => item?.Result != null);
     this.calculateItemSummary(); // Calculate and display the subtotal on page load
   }
 
   // Calculate and display the item subtotal
   calculateItemSummary() {
     this.itemTotal = this.list.reduce((total, item) => {
-      //   const quantity = item.Result.Quantity || 1;
-      //   return total + item.Result.FinalPrice * quantity; // Sum the total price of items in the cart
-      // }, 0);
       // Usar operador opcional y valor por defecto
       const quantity = item?.quantity ?? 1;
       const price = item?.FinalPrice ?? 0;
@@ -84,14 +79,6 @@ export default class CheckoutProcess {
       quantity: 1,
     }));
   }
-  /*packageItems(items) {
-    return items.map((item) => ({
-      id: item.Result.Id, // Product ID
-      name: item.Result.Name, // Product name
-      price: item.Result.FinalPrice, // Product price
-      quantity: item.Result.Quantity || 1, // Quantity (default to 1 if not available)
-    }));
-  }*/
 
   // Handle the checkout process (submit the order)
   async checkout(form) {
@@ -130,96 +117,3 @@ export default class CheckoutProcess {
     }
   }
 }
-
-/*
-const services = new ExternalServices();
-
-function formDataToJSON(formElement) {
-  const formData = new FormData(formElement);
-  let convertedJSON = {};
-
-  formData.forEach(function (value, key) {
-    convertedJSON[key] = value;
-  });
-
-  return convertedJSON;
-}
-
-function packageItems(items) {
-  const itemList = items.map((item) => ({
-    id: item.Id,
-    name: item.Name,
-    price: item.FinalPrice,
-    quantity: item.quantity,
-  }));
-
-  return itemList;
-}
-
-export default class CheckoutProcess {
-  constructor(key) {
-    this.key = key;
-    this.itemList = [];
-    this.itemTotal = 0;
-    this.shipping = 0;
-    this.tax = 0;
-    this.orderTotal = 0;
-  }
-
-  init() {
-    this.itemList = getLocalStorage(this.key) ?? []; //?? []
-    this.calculateItemSummary();
-  }
-
-  calculateItemSummary() {
-    const summaryElement = document.querySelector("#cartTotal");
-    const itemNumElement = document.querySelector("#num-items");
-    itemNumElement.textContent = this.itemList.length;
-    const amounts = this.itemList.map((item) => item.FinalPrice);
-    this.itemTotal = amounts.reduce((sum, item) => sum + item);
-    summaryElement.textContent = `$${this.itemTotal.toFixed(2)}`;
-  }
-
-  calculateTotal() {
-    this.tax = this.itemTotal * 0.06;
-    this.shipping = 10 + (this.itemList.length - 1) * 2;
-    this.orderTotal =
-      parseFloat(this.itemTotal) +
-      parseFloat(this.shipping) +
-      parseFloat(this.tax);
-    this.displayOrederTotals();
-  }
-
-  displayOrederTotals() {
-    const tax = document.querySelector("#tax");
-    const shipping = document.querySelector("#shipping");
-    const orderTotal = document.querySelector("#orderTotal");
-
-    tax.textContent = `$${this.tax.toFixed(2)}`;
-    shipping.textContent = `$${this.shipping.toFixed(2)}`;
-    orderTotal.textContent = `$${this.orderTotal.toFixed(2)}`;
-  }
-
-  async checkout() {
-    const formData = document.forms["checkout"];
-    const orderData = formDataToJSON(formData);
-    orderData.orderDate = new Date().toISOString();
-    orderData.orderTotal = this.orderTotal;
-    orderData.shipping = this.shipping;
-    orderData.tax = this.tax;
-    orderData.items = packageItems(this.itemList);
-    try {
-      const response = await services.checkout(orderData);
-      console.log(response);
-      setLocalStorage("so-cart", []);
-      location.assign("/checkout/success.html");
-    } catch (err) {
-      removeAllAlerts();
-      for (let message in err.message) {
-        alertMessage(err.message[message]);
-      }
-      console.log(err);
-    }
-  }
-}
-*/

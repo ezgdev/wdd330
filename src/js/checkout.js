@@ -22,9 +22,6 @@ checkout.init(); // Initialize the process to calculate the item subtotal
 document.querySelector("#zip").addEventListener("input", (event) => {
   const zipCode = event.target.value;
 
-  console.log("Evento ZIP activado");
-  console.log("Carrito: ", checkout.list); // ¿Tiene items?
-
   // If ZIP code has 5 digits, calculate shipping, tax, and total
   if (zipCode.length === 5) {
     checkout.calculateOrderTotal();
@@ -44,6 +41,7 @@ document
     //Get the form from the event.
     const myForm = event.target;
     const zipyCode = myForm.zip.value;
+
     // Forzar cálculo si el ZIP es válido
     if (zipyCode.length === 5) {
       checkout.calculateOrderTotal();
@@ -113,28 +111,3 @@ function isValidExpirationDate(expirationDate) {
 
   return true;
 }
-
-/*function isValidExpirationDate(expirationDate) {
-  const [month, year] = expirationDate.split("/");
-  const expDate = new Date(`20${year}-${month}-01`);
-  return expDate > new Date();
-}*/
-
-/*
-const order = new CheckoutProcess("so-cart");
-order.init();
-
-document
-  .querySelector("#zip")
-  .addEventListener("blur", order.calculateTotal.bind(order));
-
-document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
-  e.preventDefault();
-  const myForm = document.forms[0];
-  const chk_status = myForm.checkValidity();
-  myForm.reportValidity();
-  if (chk_status) {
-    order.checkout();
-  }
-});
-*/
