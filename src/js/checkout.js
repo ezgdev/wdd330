@@ -33,8 +33,9 @@ document.querySelector("#zip").addEventListener("input", (event) => {
 });
 
 // Handle form submission for checkout
-document.querySelector("#checkout-form").addEventListener("submit"),
-  async (event) => {
+document
+  .querySelector("#checkout-form")
+  .addEventListener("submit", async (event) => {
     event.preventDefault();
 
     //Get the form from the event.
@@ -74,7 +75,7 @@ document.querySelector("#checkout-form").addEventListener("submit"),
     } catch (error) {
       alertMessage("Error when processing the order: " + error.message, true);
     }
-  };
+  });
 
 function isValidCardNumber(cardNumber) {
   // Card number validation logic (let 13-19 digits)
