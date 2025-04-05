@@ -5,7 +5,7 @@ export default class CheckoutProcess {
   constructor(key, outputSelector) {
     this.key = key;
     this.outputSelector = outputSelector;
-    this.subTotal = 0;
+    this.subtotal = 0;
     this.shipping = 0;
     this.tax = 0;
     this.total = 0;
@@ -22,11 +22,11 @@ export default class CheckoutProcess {
 
   // Calculate and display the item subtotal
   calculateItemSummary() {
-    this.itemTotal = this.list.reduce((total, item) => {
+    this.itemTotal = this.list.reduce((suma, item) => {
       // Usar operador opcional y valor por defecto
       const quantity = item.quantity ?? 1;
       const price = item.FinalPrice ?? 0;
-      return total + price * quantity;
+      return suma + price * quantity;
     }, 0);
 
     // Display the item subtotal in the output section (e.g., '#subtotal')
