@@ -49,13 +49,6 @@ document
       return;
     }
 
-    // Check if the ZIP code is valid
-    const zipCode = myForm.zip.value;
-    if (zipCode.length !== 5) {
-      alertMessage("Please enter a valid ZIP code.", true);
-      return;
-    }
-
     // Validate card number and expiration date manually
     const cardNumber = myForm.cardNumber.value;
     const expirationDate = myForm.expiration.value;
