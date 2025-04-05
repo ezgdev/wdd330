@@ -14,7 +14,7 @@ export default class CheckoutProcess {
 
   // Initialize the checkout process by loading the cart and calculating the item total
   init() {
-    this.list = getLocalStorage("so-cart") ?? []; // Load the cart items from localStorage
+    this.list = getLocalStorage(this.key) ?? []; // Load the cart items from localStorage
     this.calculateItemSummary(); // Calculate and display the subtotal on page load
   }
 
@@ -22,8 +22,8 @@ export default class CheckoutProcess {
   calculateItemSummary() {
     this.itemTotal = this.list.reduce((total, item) => {
       // Usar operador opcional y valor por defecto
-      const quantity = item?.quantity ?? 1;
-      const price = item?.FinalPrice ?? 0;
+      const quantity = item.quantity ?? 1;
+      const price = item.FinalPrice ?? 0;
       return total + price * quantity;
     }, 0);
 
@@ -76,7 +76,7 @@ export default class CheckoutProcess {
       id: item.Id,
       name: item.Name,
       price: item.FinalPrice,
-      quantity: 1,
+      quantity: item.quantity ?? 1,
     }));
   }
 
