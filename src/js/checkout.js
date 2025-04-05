@@ -9,17 +9,6 @@ import {
 import CheckoutProcess from "./CheckoutProcess.mjs";
 
 loadHeaderFooter();
-document.addEventListener("DOMContentLoaded", getLocalStorage("so-cart"));
-{
-  // This function will be called when the DOM is fully loaded
-  // You can safely manipulate DOM elements here
-  // For example, you can use document.querySelector or document.getElementById
-  // to select elements and modify them
-  // Example:
-  let element = document.getElementById("subtotal");
-  if (element) {
-    element.innerText = "Estapresentet";
-  }
 
   // Initialize the CheckoutProcess with key 'so-cart' and output selectors
   const checkout = new CheckoutProcess("so-cart", {
@@ -89,7 +78,7 @@ document.addEventListener("DOMContentLoaded", getLocalStorage("so-cart"));
         alertMessage("Error when processing the order: " + error.message, true);
       }
     });
-}
+
 function isValidCardNumber(cardNumber) {
   // Card number validation logic (let 13-19 digits)
   return /^\d{13,19}$/.test(cardNumber.replace(/\s/g, "")); // Eliminar espacios
