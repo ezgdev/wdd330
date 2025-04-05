@@ -50,6 +50,7 @@
               <div class="form-div">
                 <label for="zip">Zip Code</label>
                 <input type="text" name="zip" id="zip" pattern="^\d{5}$" title="Zip code must be 5 digits"
+                  placeholder="5 digits (ex: 12345)"
                   oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 5)" required />
               </div>
             </div>
