@@ -5,13 +5,13 @@ export default class CheckoutProcess {
   constructor(key, outputSelector) {
     this.key = key;
     this.outputSelector = outputSelector;
-    this.list = [];
-    this.itemTotal = 0;
+    this.subTotal = 0;
     this.shipping = 0;
     this.tax = 0;
-    this.orderTotal = 0;
-    this.subtotal = 0;
     this.total = 0;
+    this.list = [];
+    this.itemTotal = 0;
+    this.orderTotal = 0;
   }
 
   // Initialize the checkout process by loading the cart and calculating the item total
@@ -30,7 +30,7 @@ export default class CheckoutProcess {
     }, 0);
 
     // Display the item subtotal in the output section (e.g., '#subtotal')
-    document.querySelector(this.outputSelector.subtotal).innerText =
+    document.querySelector(this.outputSelector.subTotal).innerText =
       this.itemTotal.toFixed(2);
   }
 
