@@ -20,30 +20,16 @@ const checkout = new CheckoutProcess("so-cart", {
 checkout.init(); // Initialize the process to calculate the item subtotal
 
 // Add an event listener for ZIP code input to trigger the order total calculation
-document.getElementById("zip").addEventListener("input", (event) => {
-  while (event.target.value.length < 5) {
-    event.target.value = event.target.value + "0";
-  }
-  // Get the current value of the ZIP code input
-  let zipCode = event.target.value;
-  // Check if the ZIP code is empty
-  if (zipCode === "") {
-    document.querySelector(checkout.outputSelector.shipping).innerText = "0.00";
-    document.querySelector(checkout.outputSelector.tax).innerText = "0.00";
-    document.querySelector(checkout.outputSelector.total).innerText = "0.00";
-    return;
-  }
-  // If the ZIP code is not empty, append the new value to the existing ZIP code
-  checkout.calculateOrderTotal();
-
-  // If ZIP code has 5 digits, calculate shipping, tax, and total
-  /* if (zipCode.length === 5) {
+document.querySelector("#zipdir").addEventListener("input", (event) => {
+  const zipCode = event.target.value;
+  // Validate ZIP code length (5 digits)
+  if (zipCode.length === 5) {
     checkout.calculateOrderTotal();
   } else {
     document.querySelector(checkout.outputSelector.shipping).innerText = "0.00";
     document.querySelector(checkout.outputSelector.tax).innerText = "0.00";
     document.querySelector(checkout.outputSelector.total).innerText = "0.00";
-  }*/
+  }
 });
 
 // Handle form submission for checkout

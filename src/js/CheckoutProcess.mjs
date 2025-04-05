@@ -106,7 +106,7 @@ export default class CheckoutProcess {
       street: formData.address,
       city: formData.city,
       state: formData.state,
-      zip: formData.zip,
+      zip: formData.zipdir,
       cardNumber: formData.cardNumber,
       expiration: formData.expiration,
       code: formData.code,
